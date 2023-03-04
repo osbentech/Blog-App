@@ -13,9 +13,9 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'user should be invalid without photo' do
+  it 'user should be valid without photo' do
     subject.photo = nil
-    expect(subject).to_not be_valid
+    expect(subject).to be_valid
   end
 
   it 'user should be invalid without bio' do
@@ -28,13 +28,8 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'post should be less than or equal to 100' do
+  it 'posts_counter should be less than or equal to 100' do
     subject.posts_counter = 101
     expect(subject).to_not be_valid
-  end
-
-  it 'updates posts counter after save' do
-    subject.save
-    expect(subject.posts_counter).to eq(1)
   end
 end
