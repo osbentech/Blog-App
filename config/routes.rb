@@ -1,10 +1,9 @@
-Rails.application.routes.draw do
-  resources :likes
-  resources :posts
-  resources :users
-  resources :comments
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  resources :users, only: [:index,:show] do
+  resources :posts, only: [:index,:show] 
+end
+root "users#index"
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
