@@ -19,11 +19,15 @@ RSpec.describe Comment, type: :model do
     )
   end
 
-  let(:comment) do
-    Comment.new(
-      text: 'This is my first comment.',
-      author: user,
-      post:
-    )
+  subject { Comment.new(text: 'This is my first comment.', author: user, post:) }
+  before { subject.save }
+
+  it 'comment should be valid with text, author and post' do
+    expect(subject).to be_valid
+  end
+
+  it 'should not be valid without text' do
+    subject.text = nil
+    expect(subject).to_not be_valid
   end
 end
