@@ -10,6 +10,7 @@ RSpec.describe Like, type: :model do
     )
   end
 
+
   let(:post) do
     Post.new(
       title: 'My first post',
@@ -24,5 +25,12 @@ RSpec.describe Like, type: :model do
       author: user,
       post:
     )
+  end
+  subject { Like.new(author: user, post: post) }
+  before { subject.save }
+
+  it 'like should be invalid without an author' do
+    subject.author = nil
+    expect(subject).to_not be_valid
   end
 end
