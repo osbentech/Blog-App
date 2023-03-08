@@ -10,7 +10,6 @@ RSpec.describe Like, type: :model do
     )
   end
 
-
   let(:post) do
     Post.new(
       title: 'My first post',
