@@ -19,7 +19,7 @@ RSpec.describe Comment, type: :model do
     )
   end
 
-  subject { Comment.new(text: 'This is my first comment.', author: user, post: post) }
+  subject { Comment.new(text: 'This is my first comment.', author: user, post:) }
   before { subject.save }
 
   it 'comment should be valid with text, author and post' do

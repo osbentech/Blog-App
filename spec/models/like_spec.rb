@@ -26,7 +26,7 @@ RSpec.describe Like, type: :model do
       post:
     )
   end
-  subject { Like.new(author: user, post: post) }
+  subject { Like.new(author: user, post:) }
   before { subject.save }
 
   it 'like should be invalid without an author' do
