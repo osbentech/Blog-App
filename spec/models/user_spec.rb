@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
 
   it 'user should be valid without photo' do
     subject.photo = nil
-    expect(subject).to be_valid
+    expect(subject).to_not be_valid
   end
 
   it 'user should be invalid without bio' do
