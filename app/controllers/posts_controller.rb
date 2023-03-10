@@ -1,10 +1,18 @@
 class PostsController < ApplicationController
-  def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts.order(created_at: :asc)
-  end
+  class PostsController < ApplicationController
+    before_action :set_user
 
-  def show
-    @post = Post.find(params[:id])
+    def index
+      @posts = Post.all
+    end
+
+    def show
+      @post = Post.find(params[:id])
+      puts @post.inspect
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
   end
 end
