@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'post show page', type: :feature do
   before do
-    @user1 = User.create(name: 'Rena', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Developer', posts_counter: 1)
-    @user2 = User.create(name: 'Kamsi', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Engineer', posts_counter: 1)
+    @user1 = User.create(name: 'Rena', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Developer',
+                         posts_counter: 1)
+    @user2 = User.create(name: 'Kamsi', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Engineer',
+                         posts_counter: 1)
     @post = Post.create(title: 'pi', text: 'pi', comments_counter: 2, likes_counter: 1, author: @user1)
     @first_comment = Comment.create(text: 'First comment', author: @user1, post: @post)
     @second_comment = Comment.create(text: 'Second comment', author: @user2, post: @post)
