@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'User show page', type: :feature do
   before do
-    @user = User.create(name: 'Yaba', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Developer', posts_counter: 3)
+    @user = User.create(name: 'Yaba', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Developer',
+                        posts_counter: 3)
 
     @first_post = Post.create(title: 'First', text: 'First post', comments_counter: 1, likes_counter: 1, author: @user)
-    @second_post = Post.create(title: 'Second', text: 'Second post', comments_counter: 1, likes_counter: 1, author: @user)
-    @third_post = Post.create(title: 'Third', text: 'Third post', comments_counter: 1, likes_counter: 1,  author: @user)
+    @second_post = Post.create(title: 'Second', text: 'Second post', comments_counter: 1, likes_counter: 1,
+                               author: @user)
+    @third_post = Post.create(title: 'Third', text: 'Third post', comments_counter: 1, likes_counter: 1, author: @user)
     visit user_path(id: @user.id)
   end
 
