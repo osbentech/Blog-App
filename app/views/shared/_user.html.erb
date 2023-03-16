@@ -1,6 +1,6 @@
 <%= link_to user_path(user), class: "user-list-item" do %>
     <li class="list_item border-black ">
-      <%= image_tag user.photo %>
+      <%= image_tag @user.try(:photo) || 'https://static.freeimages.com/images/home/filetypes/photo.png', class: 'prof-pic' %>
       <div class="user_info">
         <h2><%= user.name %></h2>
         <p>Number of posts: <%= user.posts_counter %></p>
