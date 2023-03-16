@@ -15,4 +15,5 @@ class User < ApplicationRecord
   def latest_posts
     posts.includes(:author).order(created_at: :desc).limit(3)
   end
+
 end
