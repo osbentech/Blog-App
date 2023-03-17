@@ -20,6 +20,10 @@ class User < ApplicationRecord
     posts.includes(:author).order(created_at: :desc).limit(3)
   end
 
+  def admin?
+    role == 'admin'
+  end
+
   private
 
   def set_default_values
