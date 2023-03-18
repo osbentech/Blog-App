@@ -1,12 +1,27 @@
 <div class="posts">
     <%= render partial: "shared/user", locals: { user: @user } %>
     <% @posts.includes(:comments).each do |post| %>
-      <%= link_to user_post_path(@user, post), class: "post" do %>
-        <%= render "shared/post", post: post %>
-        <div class="comments">
-          <%= render "shared/comment", post: post %>
-        </div>
-      <% end %>
+       <div class="post">
+         <% link = "posts/#{post.id}" %>
+          <a href=<%= link %>>
+            <h3> Post'#'<%= post.id %>: <%= post.title %></h3>
+            <p><%= truncate(post.text, length: 150, omission: "...") %></p>
+            <div class="like-comment">
+              Comments : <%= post.comments_counter %>,
+              Likes : <%= post.likes_counter %>
+            </div>
+          </a>
+          <br />
+          <% if can? :destroy, post %>
+            <button type="button" class="btn delete-btn">
+              <%= link_to "Delete Post", user_post_path(user_id: post.author_id, id: post.id), data: { turbo_method: :delete } %>
+            </button>
+          <% end %>
+       </div>
+      <br />
+      <div class="comments">
+        <%= render "shared/comment", post: post %>
+      </div>
     <% end %>
     <button type="button" class="btn">Pagination</button>
 </div>
