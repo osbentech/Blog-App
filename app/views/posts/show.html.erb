@@ -6,7 +6,20 @@
   <p> <%= @post.text %></p>
 
   <div class="comments">
-    <%= render "shared/comment", post: @post %>
+    <% if (@post.comments.empty?) %>
+    <p>No comment yet.</p>
+    <% else %>
+      <% @post.comments.each do |comment| %>
+        <ul class="border-black ">
+          <li><%= comment.author.name %>: <%= comment.text %></li>
+          <% if can? :destroy, comment %>
+            <button type="button" class="btn delete-btn">
+              <%= link_to "Delete Comment", user_post_comment_path(author_id: comment.author_id, post_id: comment.post.id, id: comment.id), data: { turbo_method: :delete } %>
+            </button>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="like-comment-btn">

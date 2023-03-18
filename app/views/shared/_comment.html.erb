@@ -5,7 +5,7 @@
     <ul class="border-black ">
       <li><%= comment.author.name %>: <%= comment.text %></li>
       <% if can? :destroy, comment %>
-        <%= link_to "Delete Comment", user_post_comments_path(author_id: comment.author_id, post_id: comment.post.id, id: comment.id), data: { turbo_method: :delete } %>
+        <%= link_to "Delete Comment", user_post_comments_path(author_id: comment.author_id, post_id: comment.post.id, id: comment.id), data: { turbo_method: :destroy } %>
       <% end %>
     </ul>
   <% end %>
