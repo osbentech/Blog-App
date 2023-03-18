@@ -8,8 +8,8 @@ class Ability
       can :manage, :all # admin can do anything
     else
       can :read, :all # guest user can read everything
-      can :manage, Post, user_id: user.id
-      can :manage, Comment, user_id: user.id
+      can :manage, Post, author_id: user.id
+      can :manage, Comment, author_id: user.id
     end
   end
 end
